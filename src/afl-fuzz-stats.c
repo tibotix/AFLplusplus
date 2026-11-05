@@ -118,6 +118,16 @@ void write_stats_file(double bitmap_cvg, double stability, double eps) {
               ? ""
               : "default",
           orig_cmdline);
+  fprintf(f,
+          "smart_execs       : %llu\n"
+          "smart_finds       : %llu\n"
+          "havoc_execs       : %llu\n"
+          "havoc_finds       : %llu\n"
+          "splice_execs      : %llu\n"
+          "splice_finds      : %llu\n",
+          stage_cycles[STAGE_CUSTOM_MUTATOR], stage_finds[STAGE_CUSTOM_MUTATOR],
+          stage_cycles[STAGE_HAVOC], stage_finds[STAGE_HAVOC],
+          stage_cycles[STAGE_SPLICE], stage_finds[STAGE_SPLICE]);
   /* ignore errors */
 
   fclose(f);
